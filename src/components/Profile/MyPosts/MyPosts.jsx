@@ -1,7 +1,6 @@
 import React from "react";
 import p from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import * from 'win32ole';
 
 const MyPosts = (props) => {
   console.log(props);
@@ -10,29 +9,6 @@ const MyPosts = (props) => {
   let addPost = () => {
     // let text = newPost.current.value;
     props.addPost();
-  };
-
-  let ParseUrl = () => {
-    let makeHttp = () => {
-      try {
-        return new XMLHttpRequest();
-      } catch (error) {}
-      try {
-        let Msxml2 = 
-        return new ActiveXObject("Msxml2.XMLHTTP");
-      } catch (error) {}
-      try {
-        return new ActiveXObject("Microsoft.XMLHTTP");
-      } catch (error) {}
-
-      throw new Error("Could not create HTTP request object.");
-    };
-    let request = makeHttp();
-    request.open("GET", "https://shikimori.one/animes/14467-k", true);
-    request.send(null);
-    request.onreadystatechange = function () {
-      if (request.readyState == 4) alert(request.responseText);
-    };
   };
 
   let onPostChange = () => {
@@ -53,7 +29,6 @@ const MyPosts = (props) => {
         </div>
         <div>
           <button onClick={addPost}>Add post</button>
-          <button onClick={ParseUrl}>Parse Url</button>
         </div>
       </div>
       <div className={p.posts}>
